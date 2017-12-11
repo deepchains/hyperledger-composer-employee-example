@@ -1,0 +1,23 @@
+namespace org.knoldus.models
+
+asset Employee identified by empId {
+  o String empId
+  --> Company company
+  o String name
+}
+
+participant Company identified by companyId {
+  o String companyId
+  o String companyName
+}
+
+transaction SwitchCompany {
+  --> Employee employee
+  --> Company newCompany
+}
+
+event EmployeeEvent {
+  --> Employee employee
+  --> Company oldCompany
+  --> Company newCompany
+}
